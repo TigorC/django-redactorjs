@@ -2,7 +2,10 @@ import os
 import shutil
 from django.test import TestCase
 from django import forms
-from django.core.urlresolvers import reverse
+try:
+    from django.urls import reverse
+except ImportError:
+    from django.core.urlresolvers import reverse
 from django.core.files.uploadedfile import SimpleUploadedFile
 try:
     from django.contrib.auth import get_user_model
