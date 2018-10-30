@@ -1,3 +1,6 @@
+v0.3.6
+* Added django 2.0/2.1 support
+----
 v0.3.4
 * Added filename in response
 ----
