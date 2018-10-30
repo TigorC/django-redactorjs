@@ -1,7 +1,10 @@
 import json
 from django.forms import widgets
 from django.utils.safestring import mark_safe
-from django.core.urlresolvers import reverse
+try:
+    from django.core.urlresolvers import reverse
+except ModuleNotFoundError:
+    from django.urls import reverse
 from django.conf import settings
 
 
@@ -41,7 +44,7 @@ class RedactorEditor(widgets.Textarea):
         options.update(self.custom_options)
         return json.dumps(options)
 
-    def render(self, name, value, attrs=None):
+    def render(self, name, value, renderer=None, attrs=None):
         html = super(RedactorEditor, self).render(name, value, attrs)
         final_attrs = self.build_attrs(attrs)
         id_ = final_attrs.get('id')
